@@ -1,0 +1,339 @@
+{
+  "processes": [
+    {
+      "name": "fork",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "echo",
+          "args": [
+            "Starting parallel sleeps"
+          ]
+        }
+      },
+      "ins": [
+        0
+      ],
+      "outs": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "sleep0",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "sleep",
+          "args": [
+            1
+          ]
+        }
+      },
+      "ins": [
+        1
+      ],
+      "outs": [
+        11
+      ]
+    },
+    {
+      "name": "sleep1",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "sleep",
+          "args": [
+            2
+          ]
+        }
+      },
+      "ins": [
+        2
+      ],
+      "outs": [
+        12
+      ]
+    },
+    {
+      "name": "sleep2",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "sleep",
+          "args": [
+            3
+          ]
+        }
+      },
+      "ins": [
+        3
+      ],
+      "outs": [
+        13
+      ]
+    },
+    {
+      "name": "sleep3",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "sleep",
+          "args": [
+            4
+          ]
+        }
+      },
+      "ins": [
+        4
+      ],
+      "outs": [
+        14
+      ]
+    },
+    {
+      "name": "sleep4",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "sleep",
+          "args": [
+            5
+          ]
+        }
+      },
+      "ins": [
+        5
+      ],
+      "outs": [
+        15
+      ]
+    },
+    {
+      "name": "sleep5",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "sleep",
+          "args": [
+            6
+          ]
+        }
+      },
+      "ins": [
+        6
+      ],
+      "outs": [
+        16
+      ]
+    },
+    {
+      "name": "sleep6",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "sleep",
+          "args": [
+            7
+          ]
+        }
+      },
+      "ins": [
+        7
+      ],
+      "outs": [
+        17
+      ]
+    },
+    {
+      "name": "sleep7",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "sleep",
+          "args": [
+            8
+          ]
+        }
+      },
+      "ins": [
+        8
+      ],
+      "outs": [
+        18
+      ]
+    },
+    {
+      "name": "sleep8",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "sleep",
+          "args": [
+            9
+          ]
+        }
+      },
+      "ins": [
+        9
+      ],
+      "outs": [
+        19
+      ]
+    },
+    {
+      "name": "sleep9",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "sleep",
+          "args": [
+            10
+          ]
+        }
+      },
+      "ins": [
+        10
+      ],
+      "outs": [
+        20
+      ]
+    },
+    {
+      "name": "join",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "echo",
+          "args": [
+            "join complete"
+          ]
+        }
+      },
+      "ins": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "outs": [
+        21
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "0",
+      "data": [
+        "0"
+      ]
+    },
+    {
+      "name": 1
+    },
+    {
+      "name": 2
+    },
+    {
+      "name": 3
+    },
+    {
+      "name": 4
+    },
+    {
+      "name": 5
+    },
+    {
+      "name": 6
+    },
+    {
+      "name": 7
+    },
+    {
+      "name": 8
+    },
+    {
+      "name": 9
+    },
+    {
+      "name": 10
+    },
+    {
+      "name": 11
+    },
+    {
+      "name": 12
+    },
+    {
+      "name": 13
+    },
+    {
+      "name": 14
+    },
+    {
+      "name": 15
+    },
+    {
+      "name": 16
+    },
+    {
+      "name": 17
+    },
+    {
+      "name": 18
+    },
+    {
+      "name": 19
+    },
+    {
+      "name": 20
+    },
+    {
+      "name": 21
+    }
+  ],
+  "ins": [
+    0
+  ],
+  "outs": [
+    21
+  ]
+}

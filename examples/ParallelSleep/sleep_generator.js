@@ -5,7 +5,7 @@
 //             fork
 //
 //           /   |   \
-//           
+//
 //        sleep sleep sleep ...
 //
 //           \   |   /
@@ -44,44 +44,44 @@ function task(name, functionName, executable, args, ins, outs) {
     "ins": ins,
     "outs": outs
   }
-}  
+}
 
 function createWf(functionName, steps) {
-  
+
   var wfOut = {
     processes: [],
     signals: [],
     ins: [0],
     outs: [2*steps+1]
   };
-  
+
   // create fork task
   var outs = [];
   for (i=1; i<=steps; i++) { outs.push(i); }
-  
+
   wfOut.processes.push(
     task("fork", functionName, "echo", ["Starting parallel sleeps"], [0], outs)
-  );      
+  );
 
-  
+
   //create sleep tasks
   for (i=0; i<steps; i++) {
     wfOut.processes.push(
       task("sleep" + i, functionName, "sleep", [i+1], [i+1], [i+steps+1])
-    );      
+    );
   }
-  
-  //create join task  
+
+  //create join task
   var ins = [];
   for (i=1; i<=steps; i++) { ins.push(steps+i); }
- 
+
   wfOut.processes.push(
     task("join", functionName, "echo", ["join complete"], ins, [2*steps+1])
-  );      
-  
+  );
+
   // create data array with file names
   var signals = []
-  signals.push("0");  
+  signals.push("0");
   signals = signals.concat(outs);
   signals = signals.concat(ins);
   signals.push(2*steps+1)
@@ -90,11 +90,11 @@ function createWf(functionName, steps) {
   for (i=1; i<signals.length; i++) {
     wfOut.signals.push({name: signals[i]});
   }
-  
-  
+
+
   // output workflow json to stdout
   console.log(JSON.stringify(wfOut, null, 2));
-  
+
 }
 
 if (!argv._[0]) {
@@ -103,4 +103,4 @@ if (!argv._[0]) {
 }
 
 //createWf("amqpCommand", argv._[0]);
-createWf("command", argv._[0]);
+createWf("lambdaCommand", argv._[0]);

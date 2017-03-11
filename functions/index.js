@@ -1,6 +1,7 @@
-var fsp = require('./fileSplitter.js'), 
+var fsp = require('./fileSplitter.js'),
     cmd = require('./command.js'),
     amqpCmd = require('./amqpCommand.js'),
+    lambdaCmd = require('./lambdaCommand.js'),
     scanDir = require('./DirScanner').scanDir;
 
 function print(ins, outs, config, cb) {
@@ -141,7 +142,7 @@ function grepFile(ins, outs, config, cb) {
         return;
     }
     console.log("grepFile: '"+ ins[1].value+"'", outs[0].value);
-    cb(null, outs); 
+    cb(null, outs);
 }
 
 
@@ -151,17 +152,17 @@ function count(ins, outs, config, cb) {
     //onsole.log(ins.length);
     //onsole.log("COUNT INS:", ins.length);
     /*ins.forEach(function(input) {
-      console.log(input); 
+      console.log(input);
     });*/
     /*console.log("COUNT OUTS:", outs.length);
     outs.forEach(function(output) {
-      console.log(output); 
+      console.log(output);
     });*/
- 
+
     outs[0].data = [];
     ins[0].data.forEach(function(cnt) {
         outs[0].data.push(cnt+1);
-        if (cnt % 1000 == 0) { 
+        if (cnt % 1000 == 0) {
             console.log("count:", cnt);
         }
         if (cnt == 5000) {
@@ -181,7 +182,7 @@ function genCollection(ins, outs, config, cb) {
     outs[0].data = [];
 
     for (var i=0; i<len; i++) {
-        //outs[0].data.push(Math.floor(Math.random() * 5) + 1); 
+        //outs[0].data.push(Math.floor(Math.random() * 5) + 1);
         outs[0].data.push(i+1);
     }
 
@@ -222,3 +223,4 @@ exports.count = count;
 exports.match = match;
 exports.noop = noop;
 exports.genCollection = genCollection;
+exports.lambdaCommand = lambdaCmd.lambdaCommand;
