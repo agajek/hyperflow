@@ -1,41 +1,35 @@
-var request = require('requestretry');
+const AWS = require('aws-sdk');
 
 function lambdaCommand(ins, outs, config, cb) {
 
-  var url = "https://m4gmbmr320.execute-api.us-west-2.amazonaws.com/Prod"
+  AWS.config.region = 'eu-central-1';
+  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: 'eu-central-1:3028a40a-8f16-4a16-a879-fbeab02d492c',
+  });
 
-  var body = {
-    "cmd": "ls -li"
+  const body = {
+    "dir": "10",
+    "name": config.executor.args[0]
   };
 
-  var req = request.post(
-    {
-      timeout: 60000,
-      url: url, json: body,
-      headers: {'Content-Type': 'application/json',
-      'Accept': '*/*'}
+  const lambda = new AWS.Lambda({region: "eu-central-1", apiVersion: '2015-03-31'});
+
+  const pullParams = {
+    FunctionName : 'linpack_768',
+    InvocationType : 'RequestResponse',
+    LogType : 'None',
+    Payload: JSON.stringify(body)
+  };
+
+  lambda.invoke(pullParams, function(error, data) {
+    if (error) {
+      console.log(error);
+      cb(err, outs)
+    } else {
+      console.log(JSON.parse(data.Payload))
+      cb(null, outs)
     }
-  );
-
-  req.on('error', function (err) {
-    console.log("Function: " + "e" + " error: " + err);
-    cb(err, outs);
   });
-
-  req.on('response', function (response) {
-    console.log("Function: " + "e" + " response status code: " + response.statusCode)
-    console.log('The number of request attempts: ' + response.attempts);
-  });
-
-  req.on('data', function (body) {
-    console.log("Function: " + "e" + " data: " + body.toString())
-  });
-
-  req.on('end', function (body) {
-    console.log("Function: " + "e" + " end.");
-    cb(null, outs);
-  })
-
 };
 
 exports.lambdaCommand = lambdaCommand;
