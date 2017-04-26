@@ -7,11 +7,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "echo",
+          "executable": "linpack_576",
           "args": [
-            "Starting parallel sleeps"
+            "Starting parallel sleeps",
+            10
           ]
-        }
+        },
+        "name": "fork"
       },
       "ins": [
         0
@@ -36,11 +38,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "sleep",
+          "executable": "linpack_576",
           "args": [
-            1
+            1,
+            10
           ]
-        }
+        },
+        "name": "sleep0"
       },
       "ins": [
         1
@@ -56,11 +60,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "sleep",
+          "executable": "linpack_576",
           "args": [
-            2
+            2,
+            10
           ]
-        }
+        },
+        "name": "sleep1"
       },
       "ins": [
         2
@@ -76,11 +82,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "sleep",
+          "executable": "linpack_576",
           "args": [
-            3
+            3,
+            10
           ]
-        }
+        },
+        "name": "sleep2"
       },
       "ins": [
         3
@@ -96,11 +104,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "sleep",
+          "executable": "linpack_576",
           "args": [
-            4
+            4,
+            10
           ]
-        }
+        },
+        "name": "sleep3"
       },
       "ins": [
         4
@@ -116,11 +126,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "sleep",
+          "executable": "linpack_576",
           "args": [
-            5
+            5,
+            10
           ]
-        }
+        },
+        "name": "sleep4"
       },
       "ins": [
         5
@@ -136,11 +148,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "sleep",
+          "executable": "linpack_576",
           "args": [
-            6
+            6,
+            10
           ]
-        }
+        },
+        "name": "sleep5"
       },
       "ins": [
         6
@@ -156,11 +170,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "sleep",
+          "executable": "linpack_576",
           "args": [
-            7
+            7,
+            10
           ]
-        }
+        },
+        "name": "sleep6"
       },
       "ins": [
         7
@@ -176,11 +192,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "sleep",
+          "executable": "linpack_576",
           "args": [
-            8
+            8,
+            10
           ]
-        }
+        },
+        "name": "sleep7"
       },
       "ins": [
         8
@@ -196,11 +214,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "sleep",
+          "executable": "linpack_576",
           "args": [
-            9
+            9,
+            10
           ]
-        }
+        },
+        "name": "sleep8"
       },
       "ins": [
         9
@@ -216,11 +236,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "sleep",
+          "executable": "linpack_576",
           "args": [
+            10,
             10
           ]
-        }
+        },
+        "name": "sleep9"
       },
       "ins": [
         10
@@ -236,11 +258,13 @@
       "firingLimit": 1,
       "config": {
         "executor": {
-          "executable": "echo",
+          "executable": "linpack_576",
           "args": [
-            "join complete"
+            "join complete",
+            10
           ]
-        }
+        },
+        "name": "join"
       },
       "ins": [
         11,

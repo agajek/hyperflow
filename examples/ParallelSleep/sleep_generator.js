@@ -28,25 +28,25 @@ function pad (str, max) {
 }
 
 // create task object
-function task(name, functionName, executable, args, ins, outs) {
+function task(name, hflowFuncionName, executable, args, ins, outs) {
   return {
     "name": name,
-    "function": functionName,
+    "function": hflowFuncionName,
     "type": "dataflow",
     "firingLimit": 1,
     "config": {
       "executor": {
-//        "queue_name": "test1",
-	"executable": executable,
-	"args": args
-      }
+      	"executable": executable,
+      	"args": args
+      },
+      "name": name
     },
     "ins": ins,
     "outs": outs
   }
 }
 
-function createWf(functionName, steps) {
+function createWf(hflowFuncionName, steps, functionName) {
 
   var wfOut = {
     processes: [],
@@ -60,14 +60,13 @@ function createWf(functionName, steps) {
   for (i=1; i<=steps; i++) { outs.push(i); }
 
   wfOut.processes.push(
-    task("fork", functionName, "echo", ["Starting parallel sleeps"], [0], outs)
+    task("fork", hflowFuncionName, functionName, ["Starting parallel sleeps", steps], [0], outs)
   );
-
 
   //create sleep tasks
   for (i=0; i<steps; i++) {
     wfOut.processes.push(
-      task("sleep" + i, functionName, "sleep", [i+1], [i+1], [i+steps+1])
+      task("sleep" + i, hflowFuncionName, functionName, [i+1, steps], [i+1], [i+steps+1])
     );
   }
 
@@ -76,7 +75,7 @@ function createWf(functionName, steps) {
   for (i=1; i<=steps; i++) { ins.push(steps+i); }
 
   wfOut.processes.push(
-    task("join", functionName, "echo", ["join complete"], ins, [2*steps+1])
+    task("join", hflowFuncionName, functionName, ["join complete", steps], ins, [2*steps+1])
   );
 
   // create data array with file names
@@ -97,10 +96,10 @@ function createWf(functionName, steps) {
 
 }
 
-if (!argv._[0]) {
-  console.log("Usage: node sleep_generator.js steps");
+if (!argv._[0] || !argv._[1]) {
+  console.log("Usage: node sleep_generator.js steps functionName");
   process.exit();
 }
 
-//createWf("amqpCommand", argv._[0]);
-createWf("lambdaCommand", argv._[0]);
+
+createWf("lambdaCommand", argv._[0], argv._[1]);

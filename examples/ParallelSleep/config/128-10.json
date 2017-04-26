@@ -1,0 +1,363 @@
+{
+  "processes": [
+    {
+      "name": "fork",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            "Starting parallel sleeps",
+            10
+          ]
+        },
+        "name": "fork"
+      },
+      "ins": [
+        0
+      ],
+      "outs": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "sleep0",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            1,
+            10
+          ]
+        },
+        "name": "sleep0"
+      },
+      "ins": [
+        1
+      ],
+      "outs": [
+        11
+      ]
+    },
+    {
+      "name": "sleep1",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            2,
+            10
+          ]
+        },
+        "name": "sleep1"
+      },
+      "ins": [
+        2
+      ],
+      "outs": [
+        12
+      ]
+    },
+    {
+      "name": "sleep2",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            3,
+            10
+          ]
+        },
+        "name": "sleep2"
+      },
+      "ins": [
+        3
+      ],
+      "outs": [
+        13
+      ]
+    },
+    {
+      "name": "sleep3",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            4,
+            10
+          ]
+        },
+        "name": "sleep3"
+      },
+      "ins": [
+        4
+      ],
+      "outs": [
+        14
+      ]
+    },
+    {
+      "name": "sleep4",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            5,
+            10
+          ]
+        },
+        "name": "sleep4"
+      },
+      "ins": [
+        5
+      ],
+      "outs": [
+        15
+      ]
+    },
+    {
+      "name": "sleep5",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            6,
+            10
+          ]
+        },
+        "name": "sleep5"
+      },
+      "ins": [
+        6
+      ],
+      "outs": [
+        16
+      ]
+    },
+    {
+      "name": "sleep6",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            7,
+            10
+          ]
+        },
+        "name": "sleep6"
+      },
+      "ins": [
+        7
+      ],
+      "outs": [
+        17
+      ]
+    },
+    {
+      "name": "sleep7",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            8,
+            10
+          ]
+        },
+        "name": "sleep7"
+      },
+      "ins": [
+        8
+      ],
+      "outs": [
+        18
+      ]
+    },
+    {
+      "name": "sleep8",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            9,
+            10
+          ]
+        },
+        "name": "sleep8"
+      },
+      "ins": [
+        9
+      ],
+      "outs": [
+        19
+      ]
+    },
+    {
+      "name": "sleep9",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            10,
+            10
+          ]
+        },
+        "name": "sleep9"
+      },
+      "ins": [
+        10
+      ],
+      "outs": [
+        20
+      ]
+    },
+    {
+      "name": "join",
+      "function": "lambdaCommand",
+      "type": "dataflow",
+      "firingLimit": 1,
+      "config": {
+        "executor": {
+          "executable": "linpack_128",
+          "args": [
+            "join complete",
+            10
+          ]
+        },
+        "name": "join"
+      },
+      "ins": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "outs": [
+        21
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "0",
+      "data": [
+        "0"
+      ]
+    },
+    {
+      "name": 1
+    },
+    {
+      "name": 2
+    },
+    {
+      "name": 3
+    },
+    {
+      "name": 4
+    },
+    {
+      "name": 5
+    },
+    {
+      "name": 6
+    },
+    {
+      "name": 7
+    },
+    {
+      "name": 8
+    },
+    {
+      "name": 9
+    },
+    {
+      "name": 10
+    },
+    {
+      "name": 11
+    },
+    {
+      "name": 12
+    },
+    {
+      "name": 13
+    },
+    {
+      "name": 14
+    },
+    {
+      "name": 15
+    },
+    {
+      "name": 16
+    },
+    {
+      "name": 17
+    },
+    {
+      "name": 18
+    },
+    {
+      "name": 19
+    },
+    {
+      "name": 20
+    },
+    {
+      "name": 21
+    }
+  ],
+  "ins": [
+    0
+  ],
+  "outs": [
+    21
+  ]
+}

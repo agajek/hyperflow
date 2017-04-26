@@ -8,28 +8,34 @@ function lambdaCommand(ins, outs, config, cb) {
   });
 
   const body = {
-    "dir": "10",
-    "name": config.executor.args[0]
+    "name": config.executor.args[0],
+    "experiment": config.executor.args[1]
   };
 
   const lambda = new AWS.Lambda({region: "eu-central-1", apiVersion: '2015-03-31'});
 
   const pullParams = {
-    FunctionName : 'linpack_768',
+    FunctionName : config.executor.executable,
     InvocationType : 'RequestResponse',
     LogType : 'None',
     Payload: JSON.stringify(body)
   };
 
-  lambda.invoke(pullParams, function(error, data) {
-    if (error) {
-      console.log(error);
-      cb(err, outs)
-    } else {
-      console.log(JSON.parse(data.Payload))
-      cb(null, outs)
-    }
-  });
+  if(config.name != "fork" && config.name != "join") {
+    lambda.invoke(pullParams, function(error, data) {
+      if (error) {
+        console.log(error);
+        cb(err, outs)
+      } else {
+        console.log(JSON.parse(data.Payload))
+        cb(null, outs)
+      }
+    });
+  } else if(config.name == "join") {
+    process.exit(0);
+  } else {
+    cb(null, outs);
+  }
 };
 
 exports.lambdaCommand = lambdaCommand;
